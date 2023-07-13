@@ -1,8 +1,8 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { ReactComponent as CartIconImg } from "../../assets/cart-dropdown.styles.svg";
 
 import "./cart-icon.styles.scss";
-import { CartContext } from "../../context/cart.context";
+// import { CartContext } from "../../context/cart.context";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCartCount,

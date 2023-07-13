@@ -3,6 +3,8 @@ import { CART_ACTION_TYPES } from "./cart.types";
 const INITIAL_STATE = {
   isCartOpen: false,
   cartItems: [],
+  isLoading: false,
+  error: null,
 };
 
 export const cartReducer = (state = INITIAL_STATE, action) => {
@@ -12,6 +14,23 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: payload,
+      };
+    case CART_ACTION_TYPES.FETCH_CART_ITEMS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case CART_ACTION_TYPES.FETCH_CART_ITEMS_SUCCESS:
+      return {
+        ...state,
+        cartItems: payload,
+        isLoading: false,
+      };
+    case CART_ACTION_TYPES.FETCH_CART_ITEMS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
       };
     case CART_ACTION_TYPES.SET_IS_CART_OPEN:
       return {

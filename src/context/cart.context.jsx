@@ -1,4 +1,9 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import {
+  createContext,
+  // useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { createActions } from "../utils/reducer/reducer.utils";
 
 export const addCartItem = (cartItems, productToAdd) => {
@@ -79,8 +84,8 @@ const cartReducer = (state, action) => {
 };
 
 export const CartProvider = ({ children }) => {
-	const [isCartOpen, setIsCartOpen] = useState(false);
-    /* const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  /* const [cartItems, setCartItems] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
 
