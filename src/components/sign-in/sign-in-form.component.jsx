@@ -11,6 +11,11 @@ import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import "./sign-in-form.styles.scss";
+import { useDispatch } from "react-redux";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 // import { UserContext } from "../../context/user.context";
 
 const defaultFormFields = {
@@ -23,6 +28,8 @@ const SignInForm = (props) => {
 
   const { email, password } = formFields;
 
+  const dispatch = useDispatch();
+
   const changeHandler = (event) => {
     const { name, value } = event.target;
 
@@ -34,7 +41,8 @@ const SignInForm = (props) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      await signInUserWithEmailAndPassword(email, password);
+      // await signInUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetForm();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -45,7 +53,8 @@ const SignInForm = (props) => {
     }
   };
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    // await signInWithGooglePopup();
+    dispatch(googleSignInStart());
     // console.log(response);
     // createUserDocumentFromAuth(response.user)
   };

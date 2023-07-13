@@ -8,26 +8,26 @@ import Authentication from "./routes/authentication/authenticqation.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 
-import {
-  authStateChangedListner,
-  createUserDocumentFromAuth,
-} from "./utils/firebase/firebase.utils";
+// import {
+//   authStateChangedListner,
+//   createUserDocumentFromAuth,
+// } from "./utils/firebase/firebase.utils";
 import { useEffect } from "react";
-import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = authStateChangedListner((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
+    // const unsubscribe = authStateChangedListner((user) => {
+    //   if (user) {
+    //     createUserDocumentFromAuth(user);
+    //   }
 
-      dispatch(setCurrentUser(user));
-    });
+    dispatch(checkUserSession());
+    // });
 
-    return unsubscribe;
+    // return unsubscribe;
   }, [dispatch]);
 
   return (
